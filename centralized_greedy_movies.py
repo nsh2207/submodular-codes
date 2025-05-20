@@ -46,26 +46,24 @@ if __name__ == "__main__":
     cumulativeRatingForAllMoviesPresentInTheSubsetTillnow = 0 # Total sum of the maximal ratings of the movies in the subset collected till now from all users
     
     
-    # for subsetSize in subsetSizes:
-    #     # Though subsetSize is 5,10,15,20,... I am passing 5 as the subsetSize parameter to the function because
-    #     # whole logic is incremental and the function will add 5 movies to the subset each time it is called and the
-    #     # size of set collected till now from beginning is subsetSize
+    for subsetSize in subsetSizes:
+        # Though subsetSize is 5,10,15,20,... I am passing 5 as the subsetSize parameter to the function because
+        # whole logic is incremental and the function will add 5 movies to the subset each time it is called and the
+        # size of set collected till now from beginning is subsetSize
 
-    #     cumulativeRatingForThisSubsetSize,userwiseContributionToTheSum = computeMaximalRecommendationSetCentral(tabular, 5,userwiseContributionToTheSum) # 
-    #     cumulativeRatingForAllMoviesPresentInTheSubsetTillnow += cumulativeRatingForThisSubsetSize # Update the total sum of the maximal ratings of the movies in the subset collected till now from all users with the change brought by the newly added 5 movies
-    #     meanMaximalRatings = cumulativeRatingForAllMoviesPresentInTheSubsetTillnow/len(user_ids)# Compute the mean maximal ratings of the movies in the subset for all users
-    #     cumulativeRatings.append(meanMaximalRatings)# Append the mean maximal ratings of the movies in the subset for all users to the cumulativeRatings list
+        cumulativeRatingForThisSubsetSize,userwiseContributionToTheSum = computeMaximalRecommendationSetCentral(tabular, 5,userwiseContributionToTheSum) # 
+        cumulativeRatingForAllMoviesPresentInTheSubsetTillnow += cumulativeRatingForThisSubsetSize # Update the total sum of the maximal ratings of the movies in the subset collected till now from all users with the change brought by the newly added 5 movies
+        meanMaximalRatings = cumulativeRatingForAllMoviesPresentInTheSubsetTillnow/len(user_ids)# Compute the mean maximal ratings of the movies in the subset for all users
+        cumulativeRatings.append(meanMaximalRatings)# Append the mean maximal ratings of the movies in the subset for all users to the cumulativeRatings list
     
-    # Block to plot the graph of the mean maximal ratings of the movies in the subset for all users for each subset size
-    cumulativeRatingForThisSubsetSize,userwiseContributionToTheSum = computeMaximalRecommendationSetCentral(tabular,200,userwiseContributionToTheSum) 
     
-    # plt.xlabel('Subset Size')
-    # plt.ylabel('Mean Maximal Ratings from each client')
-    # plt.title('Maximal set of movies to be recommended globally')
-    # plt.plot(subsetSizes, cumulativeRatings, marker='+', color='r', linestyle='None')
-    # plt.plot(subsetSizes, cumulativeRatings, color='b')
-    # plt.savefig('centralized_mean_movielens.png')
-    # plt.show()
+    plt.xlabel('Subset Size')
+    plt.ylabel('Mean Maximal Ratings from each client')
+    plt.title('Maximal set of movies to be recommended globally')
+    plt.plot(subsetSizes, cumulativeRatings, marker='+', color='r', linestyle='None')
+    plt.plot(subsetSizes, cumulativeRatings, color='b')
+    plt.savefig('centralized_mean_movielens.png')
+    plt.show()
 
     
     
